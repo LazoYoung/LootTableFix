@@ -20,6 +20,8 @@ Jar binary is available in the [Releases](https://github.com/LazoYoung/LootTable
 ## Link to your project
 Follow these steps to hook this project by your favorite build tools.  
 
+First, you need to install Craftbukkit into your local Maven repository with [BuildTools](https://www.spigotmc.org/threads/buildtools-updates-information.42865/). Let's move on.
+
 ### Maven
 Add repository and dependency to pom.xml in your project:
 ```xml
@@ -59,6 +61,7 @@ That's basically it! Run `maven install` to install the package.
 Add repository and dependency to build.gradle in your project:
 ```groovy
 repositories {
+    mavenLocal()
     maven {
         name "LootTableFix Package"
         url "https://maven.pkg.github.com/LazoYoung/LootTableFix"
