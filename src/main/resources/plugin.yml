@@ -1,0 +1,10 @@
+name: LootTableFix
+main: com.github.lazoyoung.loottablefix.Main
+api-version: '1.15'
+version: ${version}
+
+commands:
+  loottable:
+    description: Populate any loottable items into your inventory.
+    permission: loottable.admin
+    permission-message: You don't have permission.

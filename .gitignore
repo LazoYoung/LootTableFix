@@ -1,0 +1,15 @@
+# Compiled files
+build/
+*.class
+
+# Gradle
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
