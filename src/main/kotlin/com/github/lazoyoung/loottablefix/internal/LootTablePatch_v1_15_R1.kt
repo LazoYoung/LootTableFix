@@ -1,6 +1,6 @@
 package com.github.lazoyoung.loottablefix.internal
 
-import com.github.lazoyoung.loottablefix.LootTableFix
+import com.github.lazoyoung.loottablefix.LootTablePatch
 import net.minecraft.server.v1_15_R1.BlockPosition
 import net.minecraft.server.v1_15_R1.DamageSource
 import net.minecraft.server.v1_15_R1.LootContextParameters
@@ -17,11 +17,11 @@ import org.bukkit.loot.LootContext
 import org.bukkit.loot.LootTable
 import java.util.*
 
-class LootTableFix_v1_15_R1(private val lootTable: LootTable) : LootTableFix() {
+class LootTablePatch_v1_15_R1 : LootTablePatch {
 
-    override fun populateLoot(context: LootContext): List<ItemStack> {
-        val nmsContext = convertContext(context)
-        val nmsItems = getHandle().populateLoot(nmsContext)
+    override fun populateLoot(lootTable: LootTable, context: LootContext): List<ItemStack> {
+        val nmsContext = convertContext(lootTable, context)
+        val nmsItems = getHandle(lootTable).populateLoot(nmsContext)
         val bukkitItems = ArrayList<ItemStack>(nmsItems.size)
         val iter = nmsItems.iterator()
 
@@ -36,15 +36,15 @@ class LootTableFix_v1_15_R1(private val lootTable: LootTable) : LootTableFix() {
         return bukkitItems
     }
 
-    override fun fillInventory(inventory: Inventory, context: LootContext) {
-        val nmsContext = convertContext(context)
+    override fun fillInventory(inventory: Inventory, lootTable: LootTable, context: LootContext) {
+        val nmsContext = convertContext(lootTable, context)
         val craftInventory = inventory as CraftInventory
         val handle = craftInventory.inventory
 
-        getHandle().fillInventory(handle, nmsContext)
+        getHandle(lootTable).fillInventory(handle, nmsContext)
     }
 
-    private fun convertContext(context: LootContext): LootTableInfo {
+    private fun convertContext(lootTable: LootTable, context: LootContext): LootTableInfo {
         val loc = context.location
         val handle = (loc.world as CraftWorld).handle
         val builder = LootTableInfo.Builder(handle)
@@ -52,7 +52,7 @@ class LootTableFix_v1_15_R1(private val lootTable: LootTable) : LootTableFix() {
         val y = context.location.blockY
         val z = context.location.blockZ
 
-        if (getHandle() != net.minecraft.server.v1_15_R1.LootTable.EMPTY) {
+        if (getHandle(lootTable) != net.minecraft.server.v1_15_R1.LootTable.EMPTY) {
             if (context.lootedEntity != null) {
                 val nmsLootedEntity = (context.lootedEntity as CraftEntity?)!!.handle
                 builder.set(LootContextParameters.THIS_ENTITY, nmsLootedEntity)
@@ -67,10 +67,10 @@ class LootTableFix_v1_15_R1(private val lootTable: LootTable) : LootTableFix() {
             builder.set(LootContextParameters.POSITION, BlockPosition(x, y, z))
         }
 
-        return builder.build(getHandle().lootContextParameterSet)
+        return builder.build(getHandle(lootTable).lootContextParameterSet)
     }
 
-    private fun getHandle(): net.minecraft.server.v1_15_R1.LootTable {
+    private fun getHandle(lootTable: LootTable): net.minecraft.server.v1_15_R1.LootTable {
         return (lootTable as CraftLootTable).handle
     }
 

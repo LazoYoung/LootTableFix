@@ -8,7 +8,6 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.loot.LootContext
-import java.util.*
 
 class LootTableCommand : CommandExecutor {
 
@@ -38,21 +37,13 @@ class LootTableCommand : CommandExecutor {
         val name = namespacedKey.toString()
         val lootTable = Bukkit.getLootTable(namespacedKey)
         val items: List<ItemStack>
-        val handler: LootTableFix?
 
         if (lootTable == null) {
             sender.sendMessage("$name not found.")
             return true
         }
 
-        handler = LootTableFix.get(lootTable)
-
-        if (handler == null) {
-            sender.sendMessage("Plugin doesn't support this Bukkit version.")
-            return true
-        }
-
-        items = handler.populateLoot(context)
+        items = Main.lootTablePatch.populateLoot(lootTable, context)
 
         if (items.isEmpty()) {
             sender.sendMessage("$name not found.")
