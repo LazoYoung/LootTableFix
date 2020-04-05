@@ -5,12 +5,22 @@ This plugin simply access net.minecraft.server just like CraftBukkit does and pr
 
 ## Example of API usage
 ```java
+// The player who receives the loot.
 Player player = Bukkit.getPlayer("SkyDoesMinecraft");
+
+// Retrieve LootTablePatch
+ServicesManager services = Bukkit.getServicesManager();
+
+if (!services.isProvidedFor(LootTablePatch.class)) {
+    Bukkit.getLogger().warning("LootTableFix plugin is required!");
+    return;
+}
+
+LootTablePatch patch = services.getRegistration(LootTablePatch.class).getProvider();
 LootContext context = LootContext.Builder(player.getLocation());
 LootTable loot = Bukkit.getLootTable("minecraft", "chests/end_city_treasure");
-LootTableFix patched = LootTableFix.get(loot);
 
-patched.fillInventory(player.getInventory(), context);
+patch.fillInventory(player.getInventory(), context);
 ```
 
 ## Download
@@ -20,7 +30,8 @@ Jar binary is available in the [Releases](https://github.com/LazoYoung/LootTable
 ## Link to your project
 Follow these steps to hook this project by your favorite build tool.  
 
-First, you need to install Craftbukkit into your local Maven repository with [Spigot BuildTools](https://www.spigotmc.org/threads/buildtools-updates-information.42865/).  
+First, you need to install CraftBukkit into your local Maven repository with
+[Spigot BuildTools](https://www.spigotmc.org/threads/buildtools-updates-information.42865/).  
 Subsequent steps vary depending on what build tool you use: Maven or Gradle
 
 ### 1. Maven
