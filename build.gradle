@@ -15,17 +15,12 @@ plugins {
 }
 
 group = "com.github.lazoyoung"
-version = "1.0"
+version = "1.0.1"
 
 repositories {
     mavenLocal()
     mavenCentral()
     maven { url "https://papermc.io/repo/repository/maven-public/" }
-}
-
-configurations {
-    priority
-    sourceSets.main.compileClasspath = configurations.priority + sourceSets.main.compileClasspath
 }
 
 jar {
@@ -34,7 +29,6 @@ jar {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
-    priority "com.destroystokyo.paper:paper-api:1.15.2-R0.1-SNAPSHOT"
     compileOnly "org.bukkit:craftbukkit:1.15-R0.1-SNAPSHOT"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
@@ -66,7 +60,7 @@ compileKotlin {
 publishing {
     repositories {
         maven {
-            name = "github"
+            name = "GithubPackages"
             url = uri("https://maven.pkg.github.com/LazoYoung/LootTableFix")
             credentials {
                 username = getProperty("github.username") ?: "undefined"
@@ -80,6 +74,7 @@ publishing {
         }
     }
 }
+
 compileTestKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
