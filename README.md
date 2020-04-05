@@ -36,7 +36,7 @@ Add repository and dependency to pom.xml in your project:
 <dependency>
     <groupId>com.github.lazoyoung</groupId>
     <artifactId>LootTableFix</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 Now you need to make your Github `personal access token`.
@@ -69,7 +69,7 @@ repositories {
     }
 }
 dependencies {
-    compileOnly "com.github.lazoyoung:LootTableFix:1.0"
+    compileOnly "com.github.lazoyoung:LootTableFix:1.0.1"
 }
 ```
 Now you need to make your Github `personal access token`.
