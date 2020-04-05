@@ -23,14 +23,9 @@ repositories {
     maven { url "https://papermc.io/repo/repository/maven-public/" }
 }
 
-jar {
-    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
-}
-
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     compileOnly "org.bukkit:craftbukkit:1.15-R0.1-SNAPSHOT"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 sourceSets {
