@@ -42,8 +42,8 @@ Add repository and dependency to pom.xml in your project:
 Now you need to make your Github `personal access token`.
 [Learn how to make one](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
 
-Next, append the following in global Maven settings: `USER_HOME\.m2\settings.xml`
-`GITHUB_USERNAME` and `YOUR_ACCESS_TOKEN` is your credential info.
+Next, append the following in global Maven settings: `USER_HOME\.m2\settings.xml`  
+> `GITHUB_USERNAME` and `YOUR_ACCESS_TOKEN` is your credential info.
 ```xml
 <servers>
     <server>
@@ -75,8 +75,8 @@ dependencies {
 Now you need to make your Github `personal access token`.
 [Learn how to make one](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
 
-Next, append the following in global Gradle settings: `USER_HOME\.gradle\gradle.properties`
-`GITHUB_USERNAME` and `YOUR_ACCESS_TOKEN` is your credential info.
+Next, append the following in global Gradle settings: `USER_HOME\.gradle\gradle.properties`  
+> `GITHUB_USERNAME` and `YOUR_ACCESS_TOKEN` is your credential info.
 ```groovy
 github.username=GITHUB_USERNAME
 github.token=YOUR_ACCESS_TOKEN
