@@ -1,6 +1,6 @@
 # LootTableFix
 This is a Paper plugin to satisfy my personal need which is to have a working LootTable.  
-LootTable API is mostly broken due to severe flaw inside CraftBukkit layer.
+LootTable API is mostly broken due to severe flaw inside CraftBukkit layer.  
 This plugin simply access net.minecraft.server just like CraftBukkit does and provides a proper API solution.
 
 ## Example of API usage
@@ -18,9 +18,12 @@ Install the latest version of binary into server's plugin folder.
 Jar binary is available in the [Releases](https://github.com/LazoYoung/LootTableFix/releases) page.
 
 ## Link to your project
-Follow these steps to hook this project by your favorite build tools.  
+Follow these steps to hook this project by your favorite build tool.  
 
-### Maven
+First, you need to install Craftbukkit into your local Maven repository with [Spigot BuildTools](https://www.spigotmc.org/threads/buildtools-updates-information.42865/).  
+Subsequent steps vary depending on what build tool you use: Maven or Gradle
+
+### 1. Maven
 Add repository and dependency to pom.xml in your project:
 ```xml
 <repositories>
@@ -36,7 +39,7 @@ Add repository and dependency to pom.xml in your project:
 <dependency>
     <groupId>com.github.lazoyoung</groupId>
     <artifactId>LootTableFix</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 Now you need to make your Github `personal access token`.
@@ -55,10 +58,11 @@ Next, append the following in global Maven settings: `USER_HOME\.m2\settings.xml
 ```
 That's basically it! Run `maven install` to install the package.
 
-### Gradle
+### 2. Gradle
 Add repository and dependency to build.gradle in your project:
 ```groovy
 repositories {
+    mavenLocal()
     maven {
         name "LootTableFix Package"
         url "https://maven.pkg.github.com/LazoYoung/LootTableFix"
@@ -69,7 +73,7 @@ repositories {
     }
 }
 dependencies {
-    compileOnly "com.github.lazoyoung:LootTableFix:1.0"
+    compileOnly "com.github.lazoyoung:LootTableFix:1.0.1"
 }
 ```
 Now you need to make your Github `personal access token`.
