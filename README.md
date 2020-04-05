@@ -18,11 +18,12 @@ Install the latest version of binary into server's plugin folder.
 Jar binary is available in the [Releases](https://github.com/LazoYoung/LootTableFix/releases) page.
 
 ## Link to your project
-Follow these steps to hook this project by your favorite build tools.  
+Follow these steps to hook this project by your favorite build tool.  
 
-First, you need to install Craftbukkit into your local Maven repository with [BuildTools](https://www.spigotmc.org/threads/buildtools-updates-information.42865/). Let's move on.
+First, you need to install Craftbukkit into your local Maven repository with [Spigot BuildTools](https://www.spigotmc.org/threads/buildtools-updates-information.42865/).  
+Subsequent steps vary depending on what build tool you use: Maven or Gradle
 
-### Maven
+### 1. Maven
 Add repository and dependency to pom.xml in your project:
 ```xml
 <repositories>
@@ -57,7 +58,7 @@ Next, append the following in global Maven settings: `USER_HOME\.m2\settings.xml
 ```
 That's basically it! Run `maven install` to install the package.
 
-### Gradle
+### 2. Gradle
 Add repository and dependency to build.gradle in your project:
 ```groovy
 repositories {
