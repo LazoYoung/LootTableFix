@@ -1,6 +1,6 @@
 # LootTableFix
 This is a Paper plugin to satisfy my personal need which is to have a working LootTable.  
-LootTable API is mostly broken due to severe flaw inside CraftBukkit layer.
+LootTable API is mostly broken due to severe flaw inside CraftBukkit layer.  
 This plugin simply access net.minecraft.server just like CraftBukkit does and provides a proper API solution.
 
 ## Example of API usage
