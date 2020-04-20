@@ -18,9 +18,9 @@ if (!services.isProvidedFor(LootTablePatch.class)) {
 
 LootTablePatch patch = services.getRegistration(LootTablePatch.class).getProvider();
 LootContext context = LootContext.Builder(player.getLocation());
-LootTable loot = Bukkit.getLootTable("minecraft", "chests/end_city_treasure");
+LootTable lootTable = Bukkit.getLootTable("minecraft", "chests/end_city_treasure");
 
-patch.fillInventory(player.getInventory(), context);
+patch.fillInventory(player.getInventory(), lootTable, context);
 ```
 
 ## Download
