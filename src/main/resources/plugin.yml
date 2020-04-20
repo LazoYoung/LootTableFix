@@ -2,6 +2,7 @@ name: LootTableFix
 main: com.github.lazoyoung.loottablefix.Main
 api-version: '1.15'
 version: ${version}
+author: LazoYoung
 
 commands:
   loottable:
